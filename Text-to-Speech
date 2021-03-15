@@ -1,0 +1,36 @@
+from tkinter import *
+import pyttsx3
+
+# Sets the size and Title for the GUI
+root = Tk()
+root.title('Speech to text GUI')
+root.geometry("400x350")
+
+# runs the function that allows text to translate to speech
+engine = pyttsx3.init()
+def say():
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[0].id)
+    engine.say(textbox.get('1.0', END))
+    engine.runAndWait()
+    print(voices[0].id)
+
+# runs the function that allows rate of speech to change
+def rate(newRate):
+    engine.setProperty('rate', int(newRate))
+
+# sets a text box
+textbox = Text(root, width = 40, height=10)
+textbox.pack(pady=20)
+
+# sets the button for text to speech
+button_frame = Frame(root)
+button_frame.pack()
+speech_button = Button(root, text="Text to Speech", command=say)
+speech_button.pack(pady=20)
+
+# sets the slider scale for rate of speech
+scale = Scale(root, from_=0, to=1000, orient=HORIZONTAL, command=rate)
+scale.pack()
+
+root.mainloop()
