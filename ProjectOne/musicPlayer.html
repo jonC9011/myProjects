@@ -1,0 +1,81 @@
+<html>
+
+  <head>
+    <div class="header">
+      <title>RAJE.com</title>
+    </div>
+    <script src="musicPlayer.js"></script>
+    <link href="musicPlayer.css" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: Arial, Crimson, sans-serif"
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="title">
+      <h1>RAJE</h1>
+      <h3>Where music is all the RAJE</h3>
+    </div>
+
+    <div class="navbar">
+      <a href="#">Playlist</a>
+      <a href="#">Artist</a>
+      <a href="#" id="dropdown">Albums</a>
+    </div>
+    </div>
+  </body>
+
+  <div class="row">
+    <div class="side"> Song List </div>
+    <div class="main"></div>
+
+    <input type="text" id="Input" onkeypress="Search()" ; placeholder="Search for the music here">
+    <table id="table">
+      <thead>
+        <tr id="header">
+          <th style="width:50%">Song</th>
+          <th style="width:35%">Artist</th>
+          <th style="width:45%">Album</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="songs(0)">
+          <td>Easy</td>
+          <td>Mac Ayres</td>
+          <td>Drive Slow</td>
+          <td> <img src="https://payload.cargocollective.com/1/14/448604/13400407/Mac-Ayres---Drive-Slow_1250.jpg" style="width: 100px"="myFunction(this)" /></td>
+        </tr>
+        <tr onclick="songs(1)">
+          <td>Go Crazy</td>
+          <td>Chris Brown</td>
+          <td>Slime & B</td>
+          <td><img id="image" src="./assets/gocrazy.jpg" alt="gocrazy" style="width: 100px"="myFunction(this)" /></td>
+        </tr>
+        <tr onclick="songs(2)">
+          <td>Positions</td>
+          <td>Ariana Grande</td>
+          <td>Positions</td>
+          <td><img id="image" src="./assets/positions.jpg" alt="positions" style="width: 100px"="myFunction(this)" /></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <div class="footer">
+    <audio controls id="source" src="./assets/Easy.mp3">
+    </audio>
+
+    <h2>Project 1</h2>
+  </div>
+  </body>
+
+</html>
+
+
+</html>
