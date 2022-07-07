@@ -1,0 +1,61 @@
+<html>
+<app-navbar></app-navbar>
+
+<div class="theme {{themeColor}}" role="main">
+  <h1>WELCOME TO SOJAZ FITNESS</h1>
+  <h3>Where fitness, is for SOJAZ</h3>
+</div>
+
+<div class="content mat-app-background " [ngClass]="{'darkMode': isDarkTheme}">
+
+  <div class="side">
+    <div class="font">
+      <H3>SOJAZ FITNESS is the gateway to the best fitness site ever! take a wild ride by using the honor system
+        tracking your calories
+        and miles you've ran. Don't lie though, we know the difference between walking to the store to get chips vs.
+        actually getting that
+        beach body. So enjoy!</H3>
+    </div>
+    <div id="image">
+      <img src="assets/chest.jpeg" alt="John" class="photoStyle">
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="side">
+    <div id="image2">
+      <img src="assets/woman-exercising-purple-hero.jpg" alt="John" class="photoStyle">
+    </div>
+    <div class="chart">
+      <h3>Here is what your chart can look like!</h3>
+      <!--  <app-barchart></app-barchart>-->
+      <!--  <app-linechart></app-linechart>-->
+      <app-chart></app-chart>
+    </div>
+
+  </div>
+  <br>
+  <br>
+
+  <div class="side">
+    <div class="font">
+      <H3>Enjoy these incredible features in our site by: looking up workouts, entering your calories, seeing workouts videos, and many more! so go ahead and explore and take on your goals to reach another level of success!   </H3>
+
+      <H3> and many more! so go ahead and explore and take on your goals to reach another level of success! </H3>
+    </div>
+    <div id="image3">
+      <img src="assets/guy.jpeg" alt="John" class="photoStyle">
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
+
+<br>
+
+</html>
+

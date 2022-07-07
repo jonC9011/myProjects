@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+<div class="theme {{themeColor}}" role="main">
+  <h1>EXERCISE DIARY</h1>
+  <h3>What you have been working out on?</h3>
+</div>
+<!--  <h2>Enter Your Workout</h2>
+<form #workoutData="ngForm" (ngSubmit)="workout(workoutData)" novalidate style="width: 500px;">
+  <div class="form-group">
+    <input class="form-control login-input" name="name" id="name" placeholder="Enter Workout" ngModel=""><br>
+  </div>
+  <div class="form-group">
+    <input class="form-control login-input" name="description" id="description" placeholder="Enter Description" ngModel=""><br>
+  </div>
+  <div class="form-group">
+    <input class="form-control login-input" name="type" id="type" placeholder="Enter Type" ngModel=""><br>
+  </div>
+  <button class="button button3">Submit</button>
+</form>-->
+<div class="content mat-app-background " [ngClass]="{'darkMode': isDarkTheme}">
+
+<div>
+  <div>
+    <h1 class="portiontitle" style="text-align: center;">SEARCH EXERCISE</h1>
+    <input class="form-control" style="width: 250px; margin: auto; align-content: center;" type="search" placeholder="search" list="exercise" [(ngModel)]="searchValue" (change)="validateSearch()" (keydown.enter)="validateSearch()" (loadstart)="validateSearch()"/>
+    <datalist id="exercise">
+      <option *ngFor="let exercise of exercises">{{exercise.name}}</option>
+    </datalist>
+
+  </div>
+
+  <div *ngIf="selectedExercise" style="text-align: center">
+    <div *ngIf="selectedExercise.type === 'Cardio'">
+    <div>
+      <p><span>Exercise Name: </span>{{selectedExercise.name}}</p>
+      <p><span>Exercise Description: </span>{{selectedExercise.description}}</p>
+      <p><span>Exercise Type: </span>{{selectedExercise.type}}</p>
+      <p><span>Calories Per Minute: </span>{{selectedExercise.caloriesBurned}}</p>
+    </div>
+    <div class="addPortion">
+      <div class="portionwithoutmessage">
+        <div class="inputsInAdd">
+          <label>Time of Day</label>
+          <select style="width: 150px; margin: auto; align-content: center;" class="form-control" #timeOfDay>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Night</option>
+          </select>
+          <br>
+          <label>Number of Minutes</label>
+          <input class="form-control" style="width: 150px; margin: auto; align-content: center;" type="number" step="0.5" min="0" placeholder="No of Minutes" #noOfMinutes (change)="message = ''"/>
+        </div>
+        <br>
+        <button class="form-control" style="width: 60px; align-content: center; margin: auto; background-color: #342b6d; color: white;"  [disabled]="noOfMinutes.value.length < 1" (click)="addCardioExercise(noOfMinutes.valueAsNumber, timeOfDay.value)">
+          ADD
+        </button>
+        <br>
+      </div>
+      <div class="messagescontainer">
+        <h1 class="message error" *ngIf="message">{{message}}</h1>
+        <h1 class="message success" *ngIf="successmessage">{{successmessage}}</h1>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="selectedExercise.type === 'Weight'">
+      <div >
+        <p><span>Exercise Name: </span> {{selectedExercise.name}}</p>
+        <p><span>Exercise Description: </span>{{selectedExercise.description}}</p>
+        <p><span>Exercise Type: </span>{{selectedExercise.type}}</p>
+        <p><span>Calories Per Minute: </span>{{selectedExercise.caloriesBurned}}</p>
+      </div>
+      <div style="margin: auto; align-items: center">
+        <div class="portionwithoutmessage">
+          <div class="inputsInAdd">
+            <label>Time of Day</label>
+            <select style="width: 150px; margin: auto; align-content: center;" class="form-control" #timeOfDay>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Night</option>
+            </select>
+            <br>
+            <label>Sets</label>
+            <input class="form-control" style="width: 150px; margin: auto; align-content: center;" type="number" step="0.5" min="0" placeholder="No of Sets" #sets (change)="message = ''"/>
+            <br>
+            <label>Reps</label>
+            <input class="form-control" style="width: 150px; margin: auto; align-content: center;" type="number" step="0.5" min="0" placeholder="No of Reps" #reps (change)="message = ''"/>
+          </div>
+          <br>
+          <button class="form-control" style="width: 60px; align-content: center; margin: auto; background-color: #342b6d; color: white;" [disabled]="sets.value.length < 1 && reps.value.length < 1" (click)="addWeightExercise(sets.valueAsNumber, reps.valueAsNumber, timeOfDay.value)">
+            ADD
+          </button>
+        </div>
+        <div class="messagescontainer">
+          <h1 class="message error" *ngIf="message">{{message}}</h1>
+          <h1 class="message success" *ngIf="successmessage">{{successmessage}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <br>
+    <h1 style="text-align: center">Exercise Diary</h1>
+    <table *ngIf="exerciseDiary.length > 0" style="margin: auto; text-align: center;">
+      <thead>
+      <th>Exercise Name</th>
+      <th>Time of Day</th>
+      <th>Sets</th>
+      <th>Reps</th>
+      <th>Total Calories Burned</th>
+      <th>Delete</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let entry of exerciseDiary">
+        <td>{{entry.exercise.name}}</td>
+        <td>{{entry.timeOfDay}}</td>
+        <td>{{entry.sets}}</td>
+        <td>{{entry.reps}}</td>
+        <td>{{entry.totalCaloriesBurned}}</td>
+        <td><img class="deleteimg" (click)="deleteExercise(entry.id)" src="assets/deleteicon.svg"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br>
+<h2>Filter Workouts by Muscle</h2>
+<div class="form-container">
+  <form #filterData="ngForm" (ngSubmit)="filterMuscles(filterData)" novalidate>
+    <div class="form-group">
+      <input style="width: 250px; margin: auto; text-align: center;"  class="form-control filter-input" name="filterName" value="filterName" id="filterName" ngModel required #muscle="ngModel">
+      <br>
+      <button class="button button3">Filter By Muscle</button>
+    </div>
+  </form>
+</div>
+<br>
+<h2>Weight Workouts</h2>
+<table style="margin: auto; text-align: center; width: 600px" >
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Muscle</th>
+  </tr>
+  <tr *ngFor="let exercises of this.exerciseService.exercises; let i = index">
+    <ng-container *ngIf="exercises.type == 'Weight'">
+      <td>{{exercises.name}}</td>
+      <td>{{exercises.description}}</td>
+      <td>{{exercises.type}}</td>
+      <td>{{exercises.muscles![0]?.muscleName}}</td>
+    </ng-container>
+  </tr>
+</table>
+<br><br>
+<h2>Cardio Workouts</h2>
+<table style="margin: auto; text-align: center; width: 600px" >
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Type</th>
+  </tr>
+  <tr *ngFor="let exercises of this.exerciseService.exercises; let i = index">
+    <ng-container *ngIf="exercises.type == 'Cardio'">
+      <td>{{exercises.name}}</td>
+      <td>{{exercises.description}}</td>
+      <td>{{exercises.type}}</td>
+    </ng-container>
+  </tr>
+</table>
+<br>
+</div>
+
+  <app-footer></app-footer>
+</div>

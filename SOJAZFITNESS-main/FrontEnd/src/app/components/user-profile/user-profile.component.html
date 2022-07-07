@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="theme {{storedTheme}}" role="main">
+  <h1>WELCOME TO YOUR FITNESS PROFILE</h1>
+  <h3>Check out the progress you've done so far solider!</h3>
+</div>
+
+
+<div class="content mat-app-background " [ngClass]="{'darkMode': isDarkTheme}">
+
+
+
+<div class = "profile">
+  <h2 class = "titleHead">My Progress</h2>
+
+
+  <div class="card mat-app-background" *ngIf="currentUserProfile">
+
+    <div class="topPart">
+      <div class="profpic">
+        <img src="assets/supas.jpeg" alt="John" class="photoStyle" >
+      </div>
+      <div class = "profDesc mat-app-background"> <h1>Welcome {{currentUserName}}!</h1>
+        <div class="title mat-app-background">
+
+
+          <h2>Sex: {{currentUserProfile.sex}}</h2>
+          <h2>Diet: I wish</h2>
+          <h2>Height: {{currentUserProfile.height}}</h2>
+          <h2>Lifestyle: {{currentUserProfile.lifestyle}}</h2>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+
+    <div class="bottomPart mat-app-background">
+      <div class="bottomLeftPart">
+
+          <h1>Change Theme</h1>
+        <div class="theme-options">
+        <div id="theme-og"
+             [ngClass]="(storedTheme === 'theme-og') ? 'active' : ''"
+             (click)="setTheme('theme-og')"></div>
+        <div id="theme-green"
+             [ngClass]="(storedTheme === 'theme-green') ? 'active' : ''"
+             (click)="setTheme('theme-green')"></div>
+        <div id="theme-blue"
+             [ngClass]="(storedTheme === 'theme-blue') ? 'active' : ''"
+             (click)="setTheme('theme-blue')"></div>
+        <div id="theme-red"
+             [ngClass]="(storedTheme === 'theme-red') ? 'active' : ''"
+             (click)="setTheme('theme-red')"></div>
+      </div>
+        <div class="theme-options">
+          <div id="theme-yellow"
+               [ngClass]="(storedTheme === 'theme-yellow') ? 'active' : ''"
+               (click)="setTheme('theme-yellow')"></div>
+          <div id="theme-orange"
+               [ngClass]="(storedTheme === 'theme-orange') ? 'active' : ''"
+               (click)="setTheme('theme-orange')"></div>
+          <div id="theme-pink"
+               [ngClass]="(storedTheme === 'theme-pink') ? 'active' : ''"
+               (click)="setTheme('theme-pink')"></div>
+          <div id="theme-black"
+               [ngClass]="(storedTheme === 'theme-black') ? 'active' : ''"
+               (click)="setTheme('theme-black')"></div>
+
+        </div>
+        <mat-slide-toggle [(ngModel)]="isDarkTheme" (change)="storeThemeSelection()" >
+        Dark Theme
+      </mat-slide-toggle>
+          <a (click)="pageOneDisplay()">Change Password</a>
+        <a (click)="logout()" >LOG OUT</a>
+
+
+      </div>
+      <div class="bottomRightPart" >
+        <h2>Current Weight: {{currentUserProfile.currentWeight}}</h2>
+        <h2>Goal Weight: {{currentUserProfile.goalWeight}}</h2>
+        <h2>Calories done today: {{currentUserProfile.currentCalories}}</h2>
+        <h2>Calorie Goal: {{currentUserProfile.goalCalories}}</h2>
+        <app-editprofilemodel></app-editprofilemodel>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<app-footer></app-footer>
+
+

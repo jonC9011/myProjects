@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<div class="theme {{themeColor}}" role="main">
+  <h1>MY PROGRESS</h1>
+  <h3>YOU LIE. YOU DIE.</h3>
+</div>
+
+<div class="content mat-app-background " [ngClass]="{'darkMode': isDarkTheme}">
+<div class="desc">
+  <h2>Enter you percentage of calories here:</h2>
+  <input type="number" class="form-control" style="width: 150px; margin: auto; align-items: center" #CalorieInput (keyup.enter)="CalorieInput" value="gees">
+  <br>
+  <app-progress-bar [progress]="CalorieInput.valueAsNumber" [total]="100"></app-progress-bar>
+</div>
+</div>
+<footer>
+  <p> Copyrights by SOJAZ Fitness LLC.</p>
+  <a href="settingspage">Settings</a>
+</footer>
+
